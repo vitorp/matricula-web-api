@@ -16,7 +16,7 @@ services:
       - ".:/app/user"
     entrypoint: /bin/sh bin/docker-entrypoint-dev.sh
     environment:
-      - DATABASE_URL=meu-postgres
+      - DATABASE_URL=postgres-matricula-web
   db:
     image: postgres:latest
     container_name: postgres-matricula-web
