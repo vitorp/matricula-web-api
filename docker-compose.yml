@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web:
+    build:
+      dockerfile:  ./docker/Dockerfile.web
+      context: .
+    image: vitorp/matricula-web-api
+    container_name: matricula-web
+    ports:
+      - "3000:3000"
+    networks:
+      - matricula-web-network
+    depends_on:
+      - db
+    volumes:
+      - ".:/app/user"
+    entrypoint: /bin/sh bin/docker-entrypoint-dev.sh
+    environment:
+      - DATABASE_URL=meu-postgres
+  db:
+    image: postgres:latest
+    container_name: postgres-matricula-web
+    volumes:
+      - "./db-data:/var/lib/postgresql/data"
+    networks:
+      - matricula-web-network
+networks:
+  matricula-web-network:
+    driver: bridge

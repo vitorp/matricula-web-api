@@ -1,0 +1,26 @@
+web:
+  build:
+    image: vitorp/rails
+    context: .
+    dockerfile: ./docker/Dockerfile.web
+  cached: true
+  depends_on:
+    - db
+  environment:
+    DATABASE_URL: db
+    RAILS_ENV: test
+  encrypted_env_file: web.env.encrypted
+db:
+  image: postgres:latest
+  environment:
+    POSTGRES_USER: gradewebapi
+herokudeployment:
+  add_docker: true
+  cached: true
+  build:
+    image: vitorp/docker-deploy
+    context: .
+    dockerfile: ./docker/Dockerfile.deploy
+  encrypted_env_file: web.env.encrypted
+  volumes:
+    - ./:/deploy

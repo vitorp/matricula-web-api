@@ -15,8 +15,14 @@
 
 # Ignore uploaded files in development
 /storage/*
+/db-data/*
 
 .byebug_history
+.env
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore codeship env encrypted variables
+/web.env
+/codeship.aes
