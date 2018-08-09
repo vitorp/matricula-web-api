@@ -2,10 +2,10 @@
   steps:
   - name: rspec
     service: web
-    command: bin/ci rspec
-  # - name: rubocop
-  #   service: web
-  #   command: rubocop
+    command: bin/ci "bundle exec rspec"
+  - name: rubocop
+    service: web
+    command: "bundle exec rubocop"
 - type: serial
   tag: master
   service: herokudeployment

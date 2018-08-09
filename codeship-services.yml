@@ -1,6 +1,6 @@
 web:
   build:
-    image: vitorp/rails
+    image: vitorp/matricula-web-api
     context: .
     dockerfile: ./docker/Dockerfile.web
   cached: true
