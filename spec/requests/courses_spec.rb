@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Campuses", type: :request do
-  describe "GET /campuses" do
+RSpec.describe "Courses", type: :request do
+  describe "GET /courses" do
     it "works! (now write some real specs)" do
-      get api_v1_campuses_path
+      get api_v1_courses_path
       expect(response).to have_http_status(200)
     end
   end

@@ -1,15 +1,15 @@
 require "rails_helper"
 
-RSpec.describe CampusesController, type: :routing do
+RSpec.describe Api::V1::CampusesController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(get: "/campuses").to route_to("campuses#index")
+      expect(get: "/api/v1/campuses").to route_to("api/v1/campuses#index")
     end
 
 
     it "routes to #show" do
-      expect(get: "/campuses/1").to route_to("campuses#show", id: "1")
+      expect(get: "/api/v1/campuses/1").to route_to("api/v1/campuses#show", id: "1")
     end
 
   end
