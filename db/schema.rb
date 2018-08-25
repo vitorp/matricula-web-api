@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_141443) do
+ActiveRecord::Schema.define(version: 2018_08_25_143148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(version: 2018_08_25_141443) do
 
   create_table "flow_periods", force: :cascade do |t|
     t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "class_letter"
+    t.integer "shift"
+    t.integer "enrolled_count"
+    t.integer "max_enrolled"
+    t.integer "credits_theory"
+    t.integer "credits_extension"
+    t.integer "credits_pratical"
+    t.integer "credits_study"
+    t.boolean "obs1"
+    t.boolean "obs2"
+    t.boolean "obs3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
