@@ -7,7 +7,7 @@ RSpec.describe Api::V1::ProfessorsController, type: :controller do
     it "returns a success response" do
       create(:professor)
       get :index, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe Api::V1::ProfessorsController, type: :controller do
     it "returns a success response" do
       professor = create(:professor)
       get :show, params: {id: professor.to_param}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
