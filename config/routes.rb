@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :flow_periods, only: [:index, :show]
       resources :subjects, only: [:index, :show]
       resources :offers, only: [:index, :show]
+      resources :slots, only: [:index, :show]
 
     end
   end
