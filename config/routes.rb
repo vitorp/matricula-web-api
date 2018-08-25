@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :subjects, only: [:index, :show]
       resources :offers, only: [:index, :show]
       resources :slots, only: [:index, :show]
+      resources :professors, only: [:index, :show]
 
     end
   end
