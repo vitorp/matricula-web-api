@@ -34,6 +34,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.5'
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_bot_rails', '~> 4.11'
 end

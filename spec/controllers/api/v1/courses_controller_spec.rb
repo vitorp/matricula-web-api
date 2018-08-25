@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Api::V1::CoursesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Course. As you add validations to Course, be sure to
   # adjust the attributes here as well.
@@ -26,5 +25,4 @@ RSpec.describe Api::V1::CoursesController, type: :controller do
       expect(response).to be_success
     end
   end
-
 end

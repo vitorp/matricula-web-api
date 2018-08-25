@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 Rails:
   Enabled: true
 
@@ -5,7 +7,6 @@ AllCops:
     Exclude:
       - 'vendor/**/*'
       - 'node_modules/**/*'
-      - 'spec/**/*'
       - 'config/**/*'
       - 'db/**/*'
       - 'bin/*'
@@ -17,11 +18,6 @@ AllCops:
 # Commonly used screens these days easily fit more than 80 characters.
 Metrics/LineLength:
   Max: 120
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/admin/**/*'
 
 # Too short methods lead to extraction of single-use methods, which can make
 # the code easier to read (by naming things), but can also clutter the class

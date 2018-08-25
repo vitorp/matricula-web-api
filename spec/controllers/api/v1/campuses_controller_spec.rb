@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Api::V1::CampusesController, type: :controller do
   let(:valid_session) { {} }
@@ -18,5 +18,4 @@ RSpec.describe Api::V1::CampusesController, type: :controller do
       expect(response).to be_success
     end
   end
-
 end
