@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :courses, only: [:index, :show]
       resources :campuses, only: [:index, :show]
       resources :curriculums, only: [:index, :show]
+      resources :flow_periods, only: [:index, :show]
 
     end
   end

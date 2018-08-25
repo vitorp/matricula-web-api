@@ -1,0 +1,2 @@
+class FlowPeriod < ApplicationRecord
+end
