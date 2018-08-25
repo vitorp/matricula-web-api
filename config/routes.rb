@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :slots, only: [:index, :show]
       resources :professors, only: [:index, :show]
       resources :semesters, only: [:index, :show]
+      resources :departments, only: [:index, :show]
 
     end
   end
