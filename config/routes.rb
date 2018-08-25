@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :offers, only: [:index, :show]
       resources :slots, only: [:index, :show]
       resources :professors, only: [:index, :show]
+      resources :semesters, only: [:index, :show]
 
     end
   end
