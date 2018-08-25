@@ -7,7 +7,7 @@ RSpec.describe Api::V1::SlotsController, type: :controller do
     it "returns a success response" do
       create(:slot)
       get :index, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe Api::V1::SlotsController, type: :controller do
     it "returns a success response" do
       slot = create(:slot)
       get :show, params: {id: slot.to_param}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end

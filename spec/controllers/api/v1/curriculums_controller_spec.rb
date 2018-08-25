@@ -7,7 +7,7 @@ RSpec.describe Api::V1::CurriculumsController, type: :controller do
     it "returns a success response" do
       create(:curriculum)
       get :index, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe Api::V1::CurriculumsController, type: :controller do
     it "returns a success response" do
       curriculum = create(:curriculum)
       get :show, params: {id: curriculum.to_param}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
