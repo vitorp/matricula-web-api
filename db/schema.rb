@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_111322) do
+ActiveRecord::Schema.define(version: 2018_08_25_132146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2018_08_19_111322) do
     t.integer "modality"
     t.integer "shift"
     t.string "degree"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "curriculums", force: :cascade do |t|
+    t.integer "credits_needed"
+    t.integer "min_credits_per_period"
+    t.integer "max_credits_per_period"
+    t.integer "min_periods"
+    t.integer "max_periods"
+    t.integer "max_credits_free_module"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
