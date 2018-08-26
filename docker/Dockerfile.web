@@ -5,6 +5,7 @@ RUN apk update && apk add nodejs build-base libxml2-dev libxslt-dev \
     sqlite sqlite-dev sqlite-libs \
     postgresql postgresql-dev postgresql-libs
 
+ENV DATABASE_USER postgres
 ENV APP_HOME /app/user
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
