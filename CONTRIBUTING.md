@@ -1,22 +1,23 @@
-# Contribuindo com Matricula Web Api
+# Contribuindo com Matricula Web API
 
 # Como posso contribuir?
 Os assuntos que precisam ser abordados se encontram nas issues e a contribuição deve ser feita seguindo essas 3 guidelines:
 - Código/commits em inglês e documentação/github em português
 - Código passando no CI ( Rspec e rubocop )
-- Contribuições devem ser feitas por meio de pull request
+- Contribuições devem ser feitas por meio de pull request. Para poder fazer isso, basta fazer um fork do projeto.
 
 # Configurando o ambiente
-## Requisitos
-Primeiro escolha se como você irá desenvolver:
-- Ambiente padrão da sua máquina
-- Utilizando Docker
+## Pré-requisitos
+O Projeto comporta duas formas de desenvolvimento:
+- Ambiente normal configurado na própria máquina
+- Utilizando o docker e docker-compose
 
 Caso tenha escolhido ambiente padrão siga o guia 'Desenvolvimeto ambiente local' do contrário siga 'Desenvolvimeto ambiente Docker'.
 
 ## Desenvolvimeto ambiente local
 ### Instalando Ruby & bundle
-Guia de instalação Bolado do ruby/bundle aqui.
+Para o desenvolvimento local necessário ter tanto ruby quanto o rails instalado na sua máquina.
+Se não tiver algum dos dois, siga o link a seguir e escolha seu sistema operacional para prosseguir: https://gorails.com/setup/
 
 ### Configuração Inicial
 Com as instalações concluidas execute `bundle install` no diretório do projeto e depois `rails db:setup` e pronto o servidor
@@ -28,7 +29,8 @@ Para testes é utilizado o framework e comando `rspec` e é feita uma analise es
 ## Desenvolvimeto ambiente Docker
 
 ### Instalando Docker & Docker Compose
-Guia de instalação MANEIRO do Docker/Docker-compose aqui.
+Para o desenvolvimento com o docker, é necessário ter tanto o docker quanto o docker-compose instalados na sua máquina.
+Se não tiver algum dos dois, siga o link a seguir e escolha seu sistema operacional para prosseguir: https://docs.docker.com/compose/install/#install-compose
 
 ### Configuração Inicial
 Primeiro build a imagem do sistema com:
@@ -39,7 +41,7 @@ Depois para subir o sistema basta executar:
 
 `docker-compose up`
 
-Quando não estiver utilizando o sistema execute `docker-compose down` para remover os containers e redes criado pelo docker que podem estar ocupando sua memória.
+Quando não estiver utilizando o sistema execute `docker-compose down` para remover os containers e redes criados pelo docker que podem estar ocupando sua memória.
 
 ### Testando
 O comando abaixo executa rspec em um container docker:
