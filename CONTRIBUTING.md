@@ -15,7 +15,7 @@ O Projeto comporta duas formas de desenvolvimento:
 Caso tenha escolhido ambiente padrão siga o guia 'Desenvolvimeto ambiente local' do contrário siga 'Desenvolvimeto ambiente Docker'.
 
 ## Desenvolvimeto ambiente local
-### Instalando Ruby & bundle
+### Instalando Rails e Ruby
 Para o desenvolvimento local necessário ter tanto ruby quanto o rails instalado na sua máquina.
 Se não tiver algum dos dois, siga o link a seguir e escolha seu sistema operacional para prosseguir: https://gorails.com/setup/
 
