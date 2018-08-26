@@ -1,8 +1,7 @@
 FROM ruby:2.5.1-alpine3.7
 MAINTAINER Vitor Pontes
 
-RUN apk update && apk add nodejs build-base libxml2-dev libxslt-dev \
-    sqlite sqlite-dev sqlite-libs \
+RUN apk update && apk add --no-cache nodejs build-base libxml2-dev libxslt-dev \
     postgresql postgresql-dev postgresql-libs
 
 ENV DATABASE_USER postgres
