@@ -8,14 +8,29 @@ Os assuntos que precisam ser abordados se encontram nas issues e a contribuiçã
 
 # Configurando o ambiente
 ## Requisitos
-Para rodar o servidor é necessário ruby e docker configurados no sistema.
-### Instalando Ruby
-Guia de instalação Bolado do ruby aqui
-### Instalando Docker
-Guia de instalação MANEIRO do Docker/Docker-compose aqui
+Primeiro escolha se como você irá desenvolver:
+- Ambiente padrão da sua máquina
+- Utilizando Docker
 
-# Configuração inicial
-## Subindo o sistema
+Caso tenha escolhido ambiente padrão siga o guia 'Desenvolvimeto ambiente local' do contrário siga 'Desenvolvimeto ambiente Docker'.
+
+## Desenvolvimeto ambiente local
+### Instalando Ruby & bundle
+Guia de instalação Bolado do ruby/bundle aqui.
+
+### Configuração Inicial
+Com as instalações concluidas execute `bundle install` no diretório do projeto e depois `rails db:setup` e pronto o servidor
+já estará pronto pra ser iniciado com `rails s`.
+
+### Testando
+Para testes é utilizado o framework e comando `rspec` e é feita uma analise estática através do `rubocop`.
+
+## Desenvolvimeto ambiente Docker
+
+### Instalando Docker & Docker Compose
+Guia de instalação MANEIRO do Docker/Docker-compose aqui.
+
+### Configuração Inicial
 Primeiro build a imagem do sistema com:
 
 `docker-compose build`
@@ -24,9 +39,9 @@ Depois para subir o sistema basta executar:
 
 `docker-compose up`
 
-Quando não estiver utilizando o sistema execute `docker-compose down` para remover os containers e redes criado pelo docker que podem estar ocupando sua memória
+Quando não estiver utilizando o sistema execute `docker-compose down` para remover os containers e redes criado pelo docker que podem estar ocupando sua memória.
 
-# Testando
+### Testando
 O comando abaixo executa rspec em um container docker:
 
 `docker-compose run --entrypoint "/bin/sh -c" web "rspec"`
@@ -35,4 +50,4 @@ Também é possivel alterar rspec por qualquer outro comando ou então executar:
 
 `docker-compose run --entrypoint "/bin/sh" web`
 
-para acessar a linha de comando do container. Caso utilize o sistema um container do postgres precisa estar rodando.
+para acessar a linha de comando do container. Caso utilize o sistema um container do postgres(db) precisa estar rodando.
