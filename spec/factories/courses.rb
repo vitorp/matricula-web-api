@@ -5,5 +5,6 @@ FactoryBot.define do
     modality { Course.modalities[:presential] }
     shift { Course.shifts[:day] }
     degree { "Bacharel" }
+    department
   end
 end

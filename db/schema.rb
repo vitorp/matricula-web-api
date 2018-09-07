@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_135906) do
+ActiveRecord::Schema.define(version: 2018_09_07_141200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_09_07_135906) do
     t.string "degree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_courses_on_department_id"
   end
 
   create_table "curriculums", force: :cascade do |t|
@@ -157,8 +159,11 @@ ActiveRecord::Schema.define(version: 2018_09_07_135906) do
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_subjects_on_department_id"
   end
 
+  add_foreign_key "courses", "departments"
   add_foreign_key "curriculums", "courses"
   add_foreign_key "curriculums_subjects", "curriculums"
   add_foreign_key "curriculums_subjects", "subjects"
@@ -173,4 +178,5 @@ ActiveRecord::Schema.define(version: 2018_09_07_135906) do
   add_foreign_key "requirement_options", "subjects"
   add_foreign_key "requirements", "subjects"
   add_foreign_key "slots", "offers"
+  add_foreign_key "subjects", "departments"
 end
