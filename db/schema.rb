@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_123735) do
+ActiveRecord::Schema.define(version: 2018_09_07_124732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,9 @@ ActiveRecord::Schema.define(version: 2018_09_07_123735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "flow_id"
+    t.bigint "subject_id"
     t.index ["flow_id"], name: "index_flow_subjects_on_flow_id"
+    t.index ["subject_id"], name: "index_flow_subjects_on_subject_id"
   end
 
   create_table "flows", force: :cascade do |t|
@@ -130,5 +132,6 @@ ActiveRecord::Schema.define(version: 2018_09_07_123735) do
   add_foreign_key "curriculums_subjects", "curriculums"
   add_foreign_key "curriculums_subjects", "subjects"
   add_foreign_key "flow_subjects", "flows"
+  add_foreign_key "flow_subjects", "subjects"
   add_foreign_key "flows", "curriculums"
 end
