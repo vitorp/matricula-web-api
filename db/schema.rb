@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_124732) do
+ActiveRecord::Schema.define(version: 2018_09_07_132608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,22 @@ ActiveRecord::Schema.define(version: 2018_09_07_124732) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "requirement_options", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["requirement_id"], name: "index_requirement_options_on_requirement_id"
+    t.index ["subject_id"], name: "index_requirement_options_on_subject_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_requirements_on_subject_id"
+  end
+
   create_table "semesters", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -134,4 +150,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_124732) do
   add_foreign_key "flow_subjects", "flows"
   add_foreign_key "flow_subjects", "subjects"
   add_foreign_key "flows", "curriculums"
+  add_foreign_key "requirement_options", "requirements"
+  add_foreign_key "requirement_options", "subjects"
+  add_foreign_key "requirements", "subjects"
 end
