@@ -3,11 +3,11 @@ class Curriculum < ApplicationRecord
   has_many :curriculums_subjects, dependent: :destroy
   has_many :subjects, through: :curriculums_subjects do
     def required
-      where('curriculums_subjects.enforcement': :required)
+      where(curriculums_subjects: {enforcement: :required})
     end
 
     def optional
-      where('curriculums_subjects.enforcement': :optional)
+      where(curriculums_subjects: {enforcement: :optional})
     end
   end
 end
