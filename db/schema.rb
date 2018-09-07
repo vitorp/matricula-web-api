@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_134902) do
+ActiveRecord::Schema.define(version: 2018_09_07_135906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(version: 2018_09_07_134902) do
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "offer_id"
+    t.index ["offer_id"], name: "index_slots_on_offer_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -170,4 +172,5 @@ ActiveRecord::Schema.define(version: 2018_09_07_134902) do
   add_foreign_key "requirement_options", "requirements"
   add_foreign_key "requirement_options", "subjects"
   add_foreign_key "requirements", "subjects"
+  add_foreign_key "slots", "offers"
 end
