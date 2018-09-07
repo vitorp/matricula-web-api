@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_132608) do
+ActiveRecord::Schema.define(version: 2018_09_07_134902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2018_09_07_132608) do
     t.index ["curriculum_id"], name: "index_flows_on_curriculum_id"
   end
 
+  create_table "offer_professors", force: :cascade do |t|
+    t.bigint "professor_id"
+    t.bigint "offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_offer_professors_on_offer_id"
+    t.index ["professor_id"], name: "index_offer_professors_on_professor_id"
+  end
+
   create_table "offers", force: :cascade do |t|
     t.string "class_letter"
     t.integer "shift"
@@ -94,6 +103,10 @@ ActiveRecord::Schema.define(version: 2018_09_07_132608) do
     t.boolean "obs3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "subject_id"
+    t.bigint "semester_id"
+    t.index ["semester_id"], name: "index_offers_on_semester_id"
+    t.index ["subject_id"], name: "index_offers_on_subject_id"
   end
 
   create_table "professors", force: :cascade do |t|
@@ -150,6 +163,10 @@ ActiveRecord::Schema.define(version: 2018_09_07_132608) do
   add_foreign_key "flow_subjects", "flows"
   add_foreign_key "flow_subjects", "subjects"
   add_foreign_key "flows", "curriculums"
+  add_foreign_key "offer_professors", "offers"
+  add_foreign_key "offer_professors", "professors"
+  add_foreign_key "offers", "semesters"
+  add_foreign_key "offers", "subjects"
   add_foreign_key "requirement_options", "requirements"
   add_foreign_key "requirement_options", "subjects"
   add_foreign_key "requirements", "subjects"

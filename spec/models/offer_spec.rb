@@ -1,5 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Offer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to :subject }
+  it { is_expected.to belong_to :semester }
+  it { is_expected.to have_many :professors }
 end

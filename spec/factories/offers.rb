@@ -11,5 +11,7 @@ FactoryBot.define do
     obs1 { false }
     obs2 { true }
     obs3 { false }
+    subject
+    semester
   end
 end
