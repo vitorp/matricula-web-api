@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_122646) do
+ActiveRecord::Schema.define(version: 2018_09_07_123735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 2018_09_07_122646) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "flow_periods", force: :cascade do |t|
+  create_table "flow_subjects", force: :cascade do |t|
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "flow_id"
-    t.index ["flow_id"], name: "index_flow_periods_on_flow_id"
+    t.index ["flow_id"], name: "index_flow_subjects_on_flow_id"
   end
 
   create_table "flows", force: :cascade do |t|
@@ -129,6 +129,6 @@ ActiveRecord::Schema.define(version: 2018_09_07_122646) do
   add_foreign_key "curriculums", "courses"
   add_foreign_key "curriculums_subjects", "curriculums"
   add_foreign_key "curriculums_subjects", "subjects"
-  add_foreign_key "flow_periods", "flows"
+  add_foreign_key "flow_subjects", "flows"
   add_foreign_key "flows", "curriculums"
 end

@@ -1,4 +1,4 @@
 class Flow < ApplicationRecord
   belongs_to :curriculum
-  has_many :flow_periods, dependent: :destroy
+  has_many :flow_subjects, dependent: :destroy
 end

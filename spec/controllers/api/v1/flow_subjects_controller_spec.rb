@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe Api::V1::FlowPeriodsController, type: :controller do
+RSpec.describe Api::V1::FlowSubjectsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      create(:flow_period)
+      create(:flow_subject)
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -13,8 +13,8 @@ RSpec.describe Api::V1::FlowPeriodsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      flow_period = create(:flow_period)
-      get :show, params: {id: flow_period.to_param}, session: valid_session
+      flow_subject = create(:flow_subject)
+      get :show, params: {id: flow_subject.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
