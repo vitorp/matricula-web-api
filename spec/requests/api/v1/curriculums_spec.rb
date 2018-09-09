@@ -14,9 +14,9 @@ RSpec.describe "Curriculums", type: :request do
     end
 
     it { expect(response).to have_http_status(:ok) }
-    it { expect(json_response.size).to eq 1 }
+    it { expect(json_response["data"].size).to be 1 }
 
-    it "returns curriculum course" do
+    it "serializes curriculum course" do
       expect(json_response["data"][0]["relationships"]["course"]["data"]["id"]).to eq course.id
     end
   end
@@ -35,7 +35,7 @@ RSpec.describe "Curriculums", type: :request do
     it { expect(response).to have_http_status(:ok) }
     it { expect(json_response["data"]["id"]).to eq curriculum.id.to_s }
 
-    it "returns curriculum course" do
+    it "serializes curriculum course" do
       expect(json_response["data"]["relationships"]["course"]["data"]["id"]).to eq course.id
     end
   end
