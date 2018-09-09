@@ -3,9 +3,9 @@ module Api
     class CoursesController < ApplicationController
       before_action :set_course, only: [:show]
 
-      # GET /courses
+      # GET departments/1/courses
       def index
-        @courses = Course.all
+        @courses = Course.where(department_id: params[:department_id])
 
         render json: @courses
       end
