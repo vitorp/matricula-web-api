@@ -3,9 +3,9 @@ module Api
     class CurriculumsController < ApplicationController
       before_action :set_curriculum, only: %i[show]
 
-      # GET /curriculums
+      # GET courses/:course_id/curriculums
       def index
-        @curriculums = Curriculum.all
+        @curriculums = Curriculum.where(course_id: params[:course_id])
 
         render json: @curriculums
       end

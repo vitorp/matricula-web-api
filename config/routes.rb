@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
-      resources :courses, only: [:index, :show]
+      resources :courses, only: [:index, :show] do
+        resources :curriculums, only: [:index, :show], shallow: true
+      end
       resources :campuses, only: [:index, :show]
-      resources :curriculums, only: [:index, :show]
       resources :flow_subjects, only: [:index, :show]
       resources :subjects, only: [:index, :show]
       resources :offers, only: [:index, :show]
