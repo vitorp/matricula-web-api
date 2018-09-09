@@ -4,9 +4,10 @@ RSpec.describe Api::V1::OffersController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+    let(:offer) { create(:offer) }
+
     it "returns a success response" do
-      create(:offer)
-      get :index, params: {}, session: valid_session
+      get :index, params: {semester_id: offer.semester.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end

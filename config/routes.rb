@@ -10,13 +10,15 @@ Rails.application.routes.draw do
         resources :courses, only: [:index]
       end
 
+      resources :semesters, only: [:index, :show] do
+        resources :offers, only: [:index, :show], shallow: true
+      end
+
       resources :campuses, only: [:index, :show]
       resources :flow_subjects, only: [:index, :show]
       resources :subjects, only: [:index, :show]
-      resources :offers, only: [:index, :show]
       resources :slots, only: [:index, :show]
       resources :professors, only: [:index, :show]
-      resources :semesters, only: [:index, :show]
 
     end
   end

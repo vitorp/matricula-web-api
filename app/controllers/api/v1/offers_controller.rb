@@ -3,9 +3,9 @@ module Api
     class OffersController < ApplicationController
       before_action :set_offer, only: [:show]
 
-      # GET /offers
+      # GET semester/1/offers
       def index
-        @offers = Offer.all
+        @offers = Offer.where(semester_id: params[:semester_id])
 
         render json: @offers
       end
