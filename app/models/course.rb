@@ -1,4 +1,7 @@
 class Course < ApplicationRecord
+  has_many :curriculums, dependent: :destroy
+  belongs_to :department
+
   enum shift: {
     day:   0,
     night: 1

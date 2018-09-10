@@ -6,5 +6,6 @@ FactoryBot.define do
     min_periods { 8 }
     max_periods { 14 }
     max_credits_free_module { 24 }
+    course
   end
 end

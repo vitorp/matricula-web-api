@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_191054) do
+ActiveRecord::Schema.define(version: 2018_09_07_141200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_08_25_191054) do
     t.string "degree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_courses_on_department_id"
   end
 
   create_table "curriculums", force: :cascade do |t|
@@ -40,6 +42,18 @@ ActiveRecord::Schema.define(version: 2018_08_25_191054) do
     t.integer "max_credits_free_module"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_curriculums_on_course_id"
+  end
+
+  create_table "curriculums_subjects", force: :cascade do |t|
+    t.bigint "curriculum_id"
+    t.bigint "subject_id"
+    t.integer "enforcement", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_id"], name: "index_curriculums_subjects_on_curriculum_id"
+    t.index ["subject_id"], name: "index_curriculums_subjects_on_subject_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -50,10 +64,31 @@ ActiveRecord::Schema.define(version: 2018_08_25_191054) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "flow_periods", force: :cascade do |t|
+  create_table "flow_subjects", force: :cascade do |t|
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "flow_id"
+    t.bigint "subject_id"
+    t.index ["flow_id"], name: "index_flow_subjects_on_flow_id"
+    t.index ["subject_id"], name: "index_flow_subjects_on_subject_id"
+  end
+
+  create_table "flows", force: :cascade do |t|
+    t.bigint "curriculum_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_id"], name: "index_flows_on_curriculum_id"
+  end
+
+  create_table "offer_professors", force: :cascade do |t|
+    t.bigint "professor_id"
+    t.bigint "offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_offer_professors_on_offer_id"
+    t.index ["professor_id"], name: "index_offer_professors_on_professor_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -70,12 +105,32 @@ ActiveRecord::Schema.define(version: 2018_08_25_191054) do
     t.boolean "obs3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "subject_id"
+    t.bigint "semester_id"
+    t.index ["semester_id"], name: "index_offers_on_semester_id"
+    t.index ["subject_id"], name: "index_offers_on_subject_id"
   end
 
   create_table "professors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "requirement_options", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["requirement_id"], name: "index_requirement_options_on_requirement_id"
+    t.index ["subject_id"], name: "index_requirement_options_on_subject_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_requirements_on_subject_id"
   end
 
   create_table "semesters", force: :cascade do |t|
@@ -94,6 +149,8 @@ ActiveRecord::Schema.define(version: 2018_08_25_191054) do
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "offer_id"
+    t.index ["offer_id"], name: "index_slots_on_offer_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -102,6 +159,24 @@ ActiveRecord::Schema.define(version: 2018_08_25_191054) do
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_subjects_on_department_id"
   end
 
+  add_foreign_key "courses", "departments"
+  add_foreign_key "curriculums", "courses"
+  add_foreign_key "curriculums_subjects", "curriculums"
+  add_foreign_key "curriculums_subjects", "subjects"
+  add_foreign_key "flow_subjects", "flows"
+  add_foreign_key "flow_subjects", "subjects"
+  add_foreign_key "flows", "curriculums"
+  add_foreign_key "offer_professors", "offers"
+  add_foreign_key "offer_professors", "professors"
+  add_foreign_key "offers", "semesters"
+  add_foreign_key "offers", "subjects"
+  add_foreign_key "requirement_options", "requirements"
+  add_foreign_key "requirement_options", "subjects"
+  add_foreign_key "requirements", "subjects"
+  add_foreign_key "slots", "offers"
+  add_foreign_key "subjects", "departments"
 end
