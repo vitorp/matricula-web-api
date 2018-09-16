@@ -15,9 +15,10 @@ Rails.application.routes.draw do
       end
 
       resources :offers, only: :show
+      resources :subjects, only: [:index, :show]
       resources :semesters, only: [:index, :show] do
         resources :offers, only: :index
-        resources :subjects, only: [:index, :show], shallow: true do
+        resources :subjects, only: :index do
           resources :offers, only: :index
         end
       end
