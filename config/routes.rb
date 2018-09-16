@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       resources :departments, only: [:index, :show] do
         resources :courses, only: :index
+        resources :subjects, only: :index
       end
 
       resources :offers, only: :show
