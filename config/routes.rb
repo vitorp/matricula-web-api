@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :offers, only: :show
       resources :semesters, only: [:index, :show] do
         resources :offers, only: :index
+        resources :subjects, only: :index
       end
 
       resources :campuses, only: [:index, :show]

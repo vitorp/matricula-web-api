@@ -34,7 +34,7 @@ RSpec.describe "Offers", type: :request do
     end
 
     it "serializes offer subject" do
-      expect(json_response["data"]["relationships"]["subject"]["data"]["id"]).to be offer_subject.id
+      expect(json_response["data"]["relationships"]["subject"]["data"]["id"]).to eq offer_subject.id.to_s
     end
   end
 end
