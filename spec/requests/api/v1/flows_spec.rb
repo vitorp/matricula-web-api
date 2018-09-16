@@ -4,6 +4,7 @@ RSpec.describe "Flow", type: :request do
   let(:flow) { create(:flow) }
   let(:curriculum) { flow.curriculum }
   let(:json_response) { JSON.parse(response.body) }
+  let(:flow_subjects) { create_list(:flow_subject, 2, flow: flow) }
 
   describe "GET curriculums/:curriculum_id/flows" do
     subject(:flow_request) { get api_v1_curriculum_flows_path(curriculum) }
@@ -22,6 +23,7 @@ RSpec.describe "Flow", type: :request do
     subject(:flow_request) { get api_v1_flow_path(flow) }
 
     before do
+      flow_subjects
       flow_request
     end
 
@@ -30,6 +32,14 @@ RSpec.describe "Flow", type: :request do
 
     it "serializes flow curriculum" do
       expect(json_response["data"]["relationships"]["curriculum"]["data"]["id"]).to eq curriculum.id.to_s
+    end
+
+    it "serializes subjects" do
+      expect(json_response["data"]["relationships"]["subjects"]["data"].size).to eq flow_subjects.size
+    end
+
+    it "serializes subjects orders" do
+      expect(json_response["data"]["relationships"]["subjects"]["data"].size).to eq flow_subjects.size
     end
   end
 end
