@@ -14,11 +14,7 @@ RSpec.describe "Subjects", type: :request do
     let!(:semester_subjects) { create_list(:subject, 2, semesters: [semester]) }
     let(:semester) { create(:semester) }
     let(:parsed_response) { JSON.parse(response.body) }
-    let(:expected_subjects) do
-      semester_subjects.map do |subject|
-        ActiveModelSerializers::Deserialization.jsonapi_parse(SubjectSerializer.new(subject).to_json)
-      end
-    end
+    let(:expected_subjects) { ActiveModelSerializers::SerializableResource.new(semester_subjects).to_json }
 
     before do
       create(:subject)
@@ -28,11 +24,11 @@ RSpec.describe "Subjects", type: :request do
     it { expect(response).to have_http_status(:ok) }
 
     it "returns a subject array" do
-      expect(parsed_response).to include(*expected_subjects)
+      expect(response.body).to eq expected_subjects
     end
 
     it "returns only expected subjects" do
-      expect(parsed_response["data"].size).to eq expected_subjects.size
+      expect(parsed_response["data"].size).to eq semester_subjects.size
     end
   end
 end
