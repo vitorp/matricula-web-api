@@ -5,7 +5,7 @@ module Api
 
       # GET curriculums/1/flows
       def index
-        @flows = Flow.all
+        @flows = Flow.where(curriculum_id: params[:curriculum_id])
 
         render json: @flows
       end
