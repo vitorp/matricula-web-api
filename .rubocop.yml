@@ -38,6 +38,8 @@ Layout/SpaceAroundEqualsInParameterDefault:
 
 Metrics/BlockLength:
   Max: 30
+  Exclude:
+    - 'spec/**/*'
 
 # Single quotes being faster is hardly measurable and only affects parse time.
 # Enforcing double quotes reduces the times where you need to change them
