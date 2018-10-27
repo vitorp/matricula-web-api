@@ -1,5 +1,8 @@
 # Contribuindo com Matricula Web API
 
+## Ruby version
+  2.5.1
+
 # Como posso contribuir?
 Os assuntos que precisam ser abordados se encontram nas issues e a contribuição deve ser feita seguindo essas 3 guidelines:
 - Código/commits em inglês e documentação/github em português
