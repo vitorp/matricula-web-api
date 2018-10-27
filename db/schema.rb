@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_141200) do
+ActiveRecord::Schema.define(version: 2018_10_27_002902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,13 @@ ActiveRecord::Schema.define(version: 2018_09_07_141200) do
     t.bigint "semester_id"
     t.index ["semester_id"], name: "index_offers_on_semester_id"
     t.index ["subject_id"], name: "index_offers_on_subject_id"
+  end
+
+  create_table "prerequisites", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "prerequisite_id"
+    t.index ["course_id", "prerequisite_id"], name: "index_prerequisites_on_course_id_and_prerequisite_id", unique: true
+    t.index ["prerequisite_id", "course_id"], name: "index_prerequisites_on_prerequisite_id_and_course_id", unique: true
   end
 
   create_table "professors", force: :cascade do |t|
