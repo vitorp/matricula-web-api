@@ -25,7 +25,7 @@ module Api
       # Only allow a trusted parameter "white list" through.
       def offer_params
         params.require(:offer).permit(:class, :shift, :enrolled_count, :vacancies_count, :credits_classes,
-                                      :credits_theory, :credits_extension, :credits_pratical, :obs1, :obs2, :obs3)
+                                      :credits_of_theory, :credits_of_extension, :credits_pratical, :obs1, :obs2, :obs3)
       end
     end
   end
