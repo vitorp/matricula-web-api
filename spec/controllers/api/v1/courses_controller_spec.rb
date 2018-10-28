@@ -11,16 +11,18 @@ RSpec.describe Api::V1::CoursesController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+    let(:course) { create(:course) }
+
     it "returns a success response" do
-      create(:course)
-      get :index, params: {}, session: valid_session
+      get :index, params: {department_id: course.department.id}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "GET #show" do
+    let(:course) { create(:course) }
+
     it "returns a success response" do
-      course = create(:course)
       get :show, params: {id: course.to_param}, session: valid_session
       expect(response).to be_successful
     end

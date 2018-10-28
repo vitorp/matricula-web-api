@@ -34,5 +34,7 @@ module MatriculaWebApi
     config.generators do |g|
       g.fixture_replacement :factory_bot
     end
+
+    ActiveModelSerializers.config.adapter = :json_api
   end
 end
