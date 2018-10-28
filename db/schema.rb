@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_10_27_190152) do
 
   # These are extensions that must be enabled in order to support this database
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 2018_10_27_190152) do
     t.integer "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "campus_id"
   end
 
   create_table "flow_subjects", force: :cascade do |t|
