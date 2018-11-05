@@ -3,9 +3,10 @@ module Api
     class OffersController < ApplicationController
       before_action :set_offer, only: [:show]
 
-      # GET /offers
+      # GET semester/1/offers
       def index
-        @offers = Offer.all
+        @offers = Offer.where(semester_id: params[:semester_id])
+        @offers = params[:subject_id].present? ? @offers.where(subject_id: params[:subject_id]) : @offers
 
         render json: @offers
       end
@@ -25,7 +26,7 @@ module Api
       # Only allow a trusted parameter "white list" through.
       def offer_params
         params.require(:offer).permit(:class, :shift, :enrolled_count, :vacancies_count, :credits_classes,
-                                      :credits_theory, :credits_extension, :credits_pratical, :obs1, :obs2, :obs3)
+                                      :credits_of_theory, :credits_of_extension, :credits_pratical, :obs1, :obs2, :obs3)
       end
     end
   end

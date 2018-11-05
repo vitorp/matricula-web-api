@@ -4,9 +4,13 @@ RSpec.describe Api::V1::CurriculumsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+    subject(:curriculum_request) { get :index, params: {course_id: course.id}, session: valid_session }
+
+    let(:curriculum) { create(:curriculum) }
+    let(:course) { curriculum.course }
+
     it "returns a success response" do
-      create(:curriculum)
-      get :index, params: {}, session: valid_session
+      curriculum_request
       expect(response).to be_successful
     end
   end

@@ -4,8 +4,10 @@ module Api
       before_action :set_subject, only: [:show]
 
       # GET /subjects
+      # GET /semesters/1/subjects
       def index
-        @subjects = Subject.all
+        @subjects = params[:semester_id].present? ? Semester.find(params[:semester_id]).subjects : Subject.all
+        @subjects = params[:department_id].present? ? @subjects.where(department_id: params[:department_id]) : @subjects
 
         render json: @subjects
       end
