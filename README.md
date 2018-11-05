@@ -1,66 +1,28 @@
 # README
 
-## Ruby version
-  2.5.1
+Achou que não ia ter API Matrícula Web da UnB? Achou errado, dev!
 
-## Requirements
-Docker and Docker Compose are required to run this project
+A matricula-web-api tem como objetivo concentrar todas as informações do Matrícula Web em uma API pública de fácil acesso. Todas as informações foram retiradas utilizando este [Crawler do Matricula Web](https://github.com/danilodelyima/mwcrawler).
 
-## Generating environment
+## Objetivos
 
-To build project image run:
+1. Ser uma API pública de fácil acesso ao Matricula Web UnB.
+2. Poder auxiliar criação de serviços e produtos que auxiliem a vida do estudante da UnB.
+3. Promover a cultura de contribuição a software aberto entre os alunos e professores da UnB.
 
-`docker-compose build`
+Mais informações se encontram no [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-To run project, simply run:
-
-`docker-compose up`
-
-And when you're finished:
-
-`docker-compose down`
-
-## Testing
-The following comand runs rspec inside a docker container:
-
-`docker-compose run --entrypoint "/bin/sh -c" web rspec`
-
-You can also swap rspec for any other command you would like to run.
-
-## Deploy
-### Pushing image to Heroku
-Before deploying the application we need to build our image and send it to heroku registry. The following command builds and pushes the image:
+## Deploy da API
+### Pushando imagem para o Heroku
+Antes de dar deploy na aplicação é necessário rodar o build da imagem e mandar pro registro do heroku. O comando a seguir faz o build e dá push na imagem criada:
 
 `heroku container:push web --recursive --context-path .`
-Since we keep dockerfile in a nested directory we need to use the recursive flag. When using the `recursive` flag we need to set the context with the `context-path` flag
+Já que mantemos o dockerfile numa pasta aninhada temos que usar a flag ```--recursive```. Quando utilizando a flag ```--recursive``` precisamos definir o contexto com a flag ```--context-path```.
 
 ### Release
-After pushing the image we just need it to release it with:
+Depois de dar push na imagem só é necessário publicar utilizando:
 
 `heroku container:release web`
 
 ### CI/CD
-Codeship is the used plataform. The steps above are performed automatically when a push happens to master.
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Codeship é a plataforma usada para o deploy. Os passos anteriores são realizados automaticamente quando um push para a master é realizado. 
