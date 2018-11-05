@@ -13,7 +13,7 @@ web:
 db:
   image: postgres:latest
   environment:
-    POSTGRES_USER: matriculawebapi
+    POSTGRES_USER: postgres
 herokudeployment:
   add_docker: true
   cached: true
