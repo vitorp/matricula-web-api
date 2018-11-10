@@ -1,9 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Flow, type: :model do
-  it { is_expected.to belong_to :curriculum }
-  it { is_expected.to have_many :flow_subjects }
-  it { is_expected.to have_many :subjects }
+  context "when testing associations..." do
+    it { is_expected.to belong_to(:curriculum) }
+    it { is_expected.to have_many(:flow_subjects).dependent(:destroy) }
+    it { is_expected.to have_many(:subjects).through(:flow_subjects) }
+  end
+
+  context "when testing validations..." do
+    it { is_expected.to validate_presence_of(:name) }
+  end
 
   describe ".subjects_by_period" do
     subject(:subjects_by_period) { flow.subjects.by_period(selected_period) }
