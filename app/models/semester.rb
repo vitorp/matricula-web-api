@@ -4,8 +4,10 @@ class Semester < ApplicationRecord
   has_many :subjects, through: :offers
 
   # Validations
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :period, presence: true
-  validates :year, presence: true
+  with_options presence: true do
+    validates :start_date
+    validates :end_date
+    validates :period
+    validates :year
+  end
 end
