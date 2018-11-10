@@ -2,6 +2,7 @@
 # and all requirements need to be fullfilled for a subject to be available
 
 class Requirement < ApplicationRecord
+  # Associations
   belongs_to :subject
   has_many :requirement_options, dependent: :destroy
   has_many :optional_subjects, through: :requirement_options, source: :subject

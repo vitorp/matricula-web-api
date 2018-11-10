@@ -1,9 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Requirement, type: :model do
-  it { is_expected.to have_many :requirement_options }
-  it { is_expected.to belong_to :subject }
-  it { is_expected.to have_many :optional_subjects }
+  context "when testing associations..." do
+    it { is_expected.to have_many(:requirement_options).dependent(:destroy) }
+    it { is_expected.to belong_to :subject }
+    it { is_expected.to have_many(:optional_subjects).through(:requirement_options) }
+  end
 
   describe "optional_subjects" do
     subject(:optional_subjects) { requirement.optional_subjects }
