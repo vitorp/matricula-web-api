@@ -18,8 +18,8 @@ RSpec.describe Offer, type: :model do
     it { is_expected.to validate_presence_of(:credits_of_extension) }
     it { is_expected.to validate_presence_of(:credits_of_practice) }
     it { is_expected.to validate_presence_of(:credits_of_study) }
-    it { is_expected.to validate_presence_of(:obs1) }
-    it { is_expected.to validate_presence_of(:obs2) }
-    it { is_expected.to validate_presence_of(:obs3) }
+    it { is_expected.to allow_value([true, false]).for(:obs1) }
+    it { is_expected.to allow_value([true, false]).for(:obs2) }
+    it { is_expected.to allow_value([true, false]).for(:obs3) }
   end
 end

@@ -11,6 +11,10 @@ class Offer < ApplicationRecord
     night: 1
   }
 
+  validates :obs1, inclusion: {in: [true, false]}
+  validates :obs2, inclusion: {in: [true, false]}
+  validates :obs3, inclusion: {in: [true, false]}
+
   with_options presence: true do
     validates :class_letter
     validates :shift
@@ -20,8 +24,5 @@ class Offer < ApplicationRecord
     validates :credits_of_extension
     validates :credits_of_practice
     validates :credits_of_study
-    validates :obs1
-    validates :obs2
-    validates :obs3
   end
 end
